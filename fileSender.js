@@ -18,7 +18,7 @@ watcher
 	.on('add', path => {
 		// stuff to do when a new file comes in
 		log("new file: " + path)
-		var newFile = path;
+		var newFile = JSON.stringify(path);
 
 		var file = fs.readFileSync("config.json");
 		var pijson = JSON.parse(file);
@@ -35,6 +35,11 @@ watcher
 			piPath += pathOnPi;
 
 			log(piPath);
-			client.scp(, piPath, function(err){});
+
+
+			client.scp(newFile, piPath, function(err){
+				log(newFile);
+			});
+			
 		}
 	});
