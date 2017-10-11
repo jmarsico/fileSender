@@ -18,7 +18,8 @@ watcher
 	.on('add', path => {
 		// stuff to do when a new file comes in
 		log("new file: " + path)
-		var newFile = JSON.stringify(path);
+		var newFile = "./"
+		newFile += path;
 
 		var file = fs.readFileSync("config.json");
 		var pijson = JSON.parse(file);
@@ -32,13 +33,14 @@ watcher
 		for(var i = 0; i < numPis; i++){
 			var piPath = 'pi:raspberry@';
 			piPath += pijson["rpis"][i];
+			piPath += ":";
 			piPath += pathOnPi;
 
 			log(piPath);
 
 
 			client.scp(newFile, piPath, function(err){
-				log(newFile);
+				log(err);
 			});
 			
 		}
