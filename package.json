@@ -1,0 +1,23 @@
+{
+  "name": "filesender",
+  "version": "1.0.0",
+  "description": "send files to other machines",
+  "main": "fileSender.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmarsico/fileSender.git"
+  },
+  "author": "ultra low res studio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmarsico/fileSender/issues"
+  },
+  "homepage": "https://github.com/jmarsico/fileSender#readme",
+  "dependencies": {
+    "chokidar": "^1.7.0",
+    "scp2": "^0.5.0"
+  }
+}
