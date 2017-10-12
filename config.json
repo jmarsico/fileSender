@@ -1,6 +1,8 @@
 {
 	"rpis": [
+		"192.168.1.215",
 		"192.168.1.211"
 	],
-	"path": "/home/pi/watchDir/"
+	"path": "/home/pi/inbox/",
+	"watchPath": "/Users/jakobmarsico/Dropbox/HUB_SPOKE_SEND"
 }

@@ -4,8 +4,20 @@ var fs = require("fs");
 
 
 
+// var udpPort = new osc.UDPPort({
+//     localAddress: "0.0.0.0",
+//     localPort: 57121,
+// });
 
-var watcher = chokidar.watch('./tmp', {
+// udpPort.open();
+//
+
+var file = fs.readFileSync("config.json");
+var config = JSON.parse(file);
+
+var watchPath = config["watchPath"];
+
+var watcher = chokidar.watch(watchPath, {
   ignored: /(^|[\/\\])\../,
   persistent: true
 });
@@ -18,21 +30,21 @@ watcher
 	.on('add', path => {
 		// stuff to do when a new file comes in
 		log("new file: " + path)
-		var newFile = "./"
+		var newFile = "";
 		newFile += path;
 
 		var file = fs.readFileSync("config.json");
-		var pijson = JSON.parse(file);
+		var config = JSON.parse(file);
 
-		var pathOnPi = pijson["path"];
+		var pathOnPi = config["path"];
 
 		
 		
-		var numPis = pijson["rpis"].length;
+		var numPis = config["rpis"].length;
 		
 		for(var i = 0; i < numPis; i++){
 			var piPath = 'pi:raspberry@';
-			piPath += pijson["rpis"][i];
+			piPath += config["rpis"][i];
 			piPath += ":";
 			piPath += pathOnPi;
 
